@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Quote Generator</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    #quote {
+      font-size: 22px;
+      color: #555;
+      margin-bottom: 30px;
+      transition: opacity 0.5s;
+    }
+
+    #new-quote {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #new-quote:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // Create container
+  const container = document.createElement('div');
+  container.className = 'container';
+  document.body.appendChild(container);
+
+  // Create heading
+  const heading = document.createElement('h1');
+  heading.textContent = 'Random Quote Generator';
+  container.appendChild(heading);
+
+  // Create quote display
+  const quoteDisplay = document.createElement('div');
+  quoteDisplay.id = 'quote';
+  quoteDisplay.textContent = 'Click the button to get a new quote!';
+  container.appendChild(quoteDisplay);
+
+  // Create button
+  const button = document.createElement('button');
+  button.id = 'new-quote';
+  button.textContent = 'New Quote';
+  container.appendChild(button);
+
+  // Array of quotes
+  const quotes = [
+    "Believe you can and you're halfway there. – Theodore Roosevelt",
+    "Success is not final, failure is not fatal: it is the courage to continue that counts. – Winston Churchill",
+    "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
+    "Dream big and dare to fail. – Norman Vaughan",
+    "Keep your face always toward the sunshine—and shadows will fall behind you. – Walt Whitman",
+    "The best way to predict your future is to create it. – Abraham Lincoln",
+    "You are never too old to set another goal or to dream a new dream. – C.S. Lewis",
+    "Hardships often prepare ordinary people for an extraordinary destiny. – C.S. Lewis",
+    "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt"
+  ];
+
+  // Function to generate a random quote
+  function generateQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    quoteDisplay.style.opacity = 0; // Fade out effect
+    setTimeout(() => {
+      quoteDisplay.textContent = quotes[randomIndex];
+      quoteDisplay.style.opacity = 1; // Fade in effect
+    }, 300);
+  }
+
+  // Event listener for button
+  button.addEventListener('click', generateQuote);
+</script>
+
+</body>
+</html>
